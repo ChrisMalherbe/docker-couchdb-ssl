@@ -1,4 +1,4 @@
-FROM klaemo/couchdb:1.6.1
+FROM klaemo/couchdb:2.0.0
 
 MAINTAINER Clemens Stolle klaemo@fastmail.fm
 
