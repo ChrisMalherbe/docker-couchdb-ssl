@@ -1,24 +1,24 @@
-# Dockerized CouchDB with nginx SSL terminator
+# Dockerized CouchDB 2.0.0 with nginx SSL terminator
 
 Make your CouchDB a straight A SSL student!
 
 **NOTE**: This image uses [nginx](http://nginx.org/) to provide the SSL/TLS endpoint.  CouchDB's SSL features are unused.
 
-Version: `CouchDB 1.6.1` and `nginx 1.9.9`.
+Version: `CouchDB 2.0.0` and `nginx 1.9.9`.
 
 ## Run
 
-Available in the docker index as [klaemo/couchdb-ssl](https://index.docker.io/u/klaemo/couchdb-ssl/)
-based on [klaemo/couchdb](https://index.docker.io/u/klaemo/couchdb/)
+Available in the docker index as [malherbe/docker-couchdb-ssl](https://hub.docker.com/r/malherbe/docker-couchdb-ssl/)
+based on [klaemo/couchdb-ssl](https://hub.docker.com/r/klaemo/couchdb-ssl/)
 
 __Note:__ Out of the box bogus self-signed certificates are being used.
 You should replace them with your real files (see below).
 
 ```bash
-$ [sudo] docker pull klaemo/couchdb-ssl:latest
+$ [sudo] docker pull malherbe/docker-couchdb-ssl:latest
 
 # expose it to the world on port 6984
-$ [sudo] docker run -d -p 6984:6984 --name couchdb klaemo/couchdb-ssl
+$ [sudo] docker run -d -p 6984:6984 --name couchdb malherbe/docker-couchdb-ssl
 
 $ curl -k https://localhost:6984
 ```
@@ -33,7 +33,7 @@ Your CouchDB will get a __straight A__ on the [SSL Labs Server Test](https://www
 
 ## Build your own
 
-You can use `klaemo/couchdb-ssl` as the base image for your own couchdb instance.
+You can use `malherbe/docker-couchdb-ssl` as the base image for your own couchdb instance.
 You might want to provide your own version of the following files:
 
 * `local.ini` for CouchDB.
@@ -46,7 +46,7 @@ You might want to provide your own version of the following files:
 Example Dockerfile:
 
 ```bash
-FROM klaemo/couchdb-ssl
+FROM malherbe/docker-couchdb-ssl
 
 COPY local.ini /usr/local/etc/couchdb/
 COPY nginx.conf /etc/nginx/
@@ -120,6 +120,7 @@ $ cat server.key server.crt [intermediate_cert1.pem ...] dhparams.pem > chain.pe
 ## Contributors
 
 * [Mirco Zeiss](https://github.com/zemirco)
+* [Chris Malherbe](https://github.com/ChrisMalherbe)
 
 ## License
 
